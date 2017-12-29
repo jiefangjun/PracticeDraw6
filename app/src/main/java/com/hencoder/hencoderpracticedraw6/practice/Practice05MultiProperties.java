@@ -4,6 +4,7 @@ import android.content.Context;
 import android.support.annotation.Nullable;
 import android.support.constraint.ConstraintLayout;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -13,6 +14,7 @@ import com.hencoder.hencoderpracticedraw6.R;
 public class Practice05MultiProperties extends ConstraintLayout {
     Button animateBt;
     ImageView imageView;
+    int state;
 
     public Practice05MultiProperties(Context context) {
         super(context);
@@ -39,6 +41,16 @@ public class Practice05MultiProperties extends ConstraintLayout {
             @Override
             public void onClick(View v) {
                 // TODO 在这里处理点击事件，同时对多个属性做动画
+                switch (state){
+                    case 0:
+                        imageView.animate().alpha(1).scaleX(1).scaleY(1).translationX(600).rotation(360);
+                        break;
+                    case 1:
+                        imageView.animate().alpha(0f).scaleX(0).scaleY(0).translationX(100).rotation(0);
+                        break;
+                }
+                state ++;
+                if (state == 2) state = 0;
             }
         });
     }
